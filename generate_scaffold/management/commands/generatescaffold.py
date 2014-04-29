@@ -183,13 +183,13 @@ class Command(VerboseCommandMixin, BaseCommand):
                 import_child('django.db.models')
 
                 # FIXME - Use namespace dictionary
-                exec(code, globals())
+                exec(code in globals())
 
                 # Get reference to generated_model
                 code_str = 'generated_model = {0}().__class__'.format(
                         rendered_model_name)
                 code = compile(code_str, '<string>', 'exec')
-                exec(code, globals())
+                exec(code in globals())
                 generated_model = globals()['generated_model']
             else:
                 generated_model = get_model(app_name, model_name)
