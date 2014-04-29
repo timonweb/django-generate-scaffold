@@ -19,7 +19,7 @@ def test_render_urls_no_module():
 
 def test_render_urls_with_timestamp():
     test_urlpattern = URLS_GENERATOR.render_urls(DATED_MODEL)
-    target_urlpattern = u"""
+    target_urlpattern = """
 
 from test_urlgen_no_urlpatterns.views.preexistingdatedmodel_views import *
 urlpatterns = patterns('',
@@ -100,7 +100,7 @@ urlpatterns = patterns('',
 #         definitions, for example, should not be tested.
 def test_render_urls_without_timestamp():
     test_urlpattern = URLS_GENERATOR.render_urls(NON_DATED_MODEL)
-    target_urlpattern = u"""
+    target_urlpattern = """
 
 from test_urlgen_no_urlpatterns.views.preexistingmodel_views import *
 urlpatterns = patterns('',

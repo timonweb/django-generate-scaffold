@@ -1,11 +1,11 @@
 import codecs
 import os
 import shutil
-import StringIO
+import io
 import tempfile
 
 
-class Filelike(StringIO.StringIO):
+class Filelike(io.StringIO):
     def __enter__(self):
         return self
 

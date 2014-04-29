@@ -14,7 +14,7 @@ from generate_scaffold.utils.strings import dumb_capitalized, \
 class ModelsGenerator(BaseGenerator):
 
     def get_field_key(self, name):
-        for field_key, aliases in FIELD_ALIASES.items():
+        for field_key, aliases in list(FIELD_ALIASES.items()):
             if name in aliases:
                 return field_key
 
