@@ -1,4 +1,5 @@
 import os
+import imp
 
 from django.db.models.loading import AppCache
 from django.utils.datastructures import SortedDict
@@ -15,7 +16,7 @@ def reload_django_appcache():
 
     for app in cache.get_apps():
         __import__(app.__name__)
-        reload(app)
+        imp.reload(app)
 
 
 def clean_pyc_in_dir(dirpath):
