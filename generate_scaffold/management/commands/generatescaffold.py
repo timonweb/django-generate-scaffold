@@ -1,6 +1,5 @@
 import os
 from optparse import make_option
-
 from django.conf import settings
 from django.core.management.base import BaseCommand, CommandError
 from django.db.models import get_model
@@ -255,15 +254,11 @@ class Command(VerboseCommandMixin, BaseCommand):
                 app_templates_root_dirpath, app_name)
             transaction.mkdir(app_templates_app_dirpath)
 
-            model_templates_dirpath = os.path.join(
-                app_templates_app_dirpath, slugify(model_name))
-            transaction.mkdir(model_templates_dirpath)
-
             templates_generator = TemplatesGenerator(app_name)
 
             rendered_templates = templates_generator.render_templates(
                 generated_model,
-                model_templates_dirpath,
+                app_templates_app_dirpath,
                 self.timestamp_fieldname
             )
 

@@ -1,4 +1,4 @@
-class {{ class_name }}DetailView({{ class_name }}View, DetailView):
-    pass
+class {{ class_name }}DetailView(DetailView):
+    model = {{ class_name }}
 
 

@@ -1,4 +1,4 @@
-class {{ class_name }}CreateView({{ class_name }}View, CreateView):
-    pass
+class {{ class_name }}CreateView(CreateView):
+    model = {{ class_name }}
 
 

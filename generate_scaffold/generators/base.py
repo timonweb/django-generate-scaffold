@@ -74,6 +74,7 @@ class BaseGenerator(object):
         return module
 
     def get_timestamp_field(self, model, timestamp_fieldname=None):
+
         if timestamp_fieldname:
             try:
                 timestamp_field = model._meta.get_field(timestamp_fieldname)
@@ -91,7 +92,7 @@ class BaseGenerator(object):
             return timestamp_field
 
         else:
-            for field in model._meta._fields():
+            for field in model._meta.fields:
                 if type(field) in [DateField, DateTimeField]:
                     return field
 

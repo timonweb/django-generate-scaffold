@@ -1,9 +1,9 @@
 {% load i18n %}
 
-{% templatetag openblock %} extends '{{ app_name }}/{{ model_slug }}/base.html' {% templatetag closeblock %}
+{% templatetag openblock %} extends 'base.html' {% templatetag closeblock %}
 
 {% templatetag openblock %} load i18n {% templatetag closeblock %}
-{% templatetag openblock %} load url from future {% templatetag closeblock %}
+
 
 {% templatetag openblock %} block filename {% templatetag closeblock %}
   {{ filename }}
@@ -41,7 +41,7 @@
 {% templatetag openblock %} block header-description {% templatetag closeblock %}
   {% templatetag openblock %} trans "{% trans "A monthly archive page showing all objects in a given month." %}" {% templatetag closeblock %}
 {% templatetag openblock %} endblock {% templatetag closeblock %}
-{% templatetag openblock %} block content {% templatetag closeblock %}
+{% templatetag openblock %} block body {% templatetag closeblock %}
   <h2>
     By Day
   </h2>
@@ -59,6 +59,6 @@
       {% blocktrans %}{{ class_name }}s created in the month of {% endblocktrans %}{% templatetag openvariable %} month|date:"M Y" {% templatetag closevariable %}
     {% templatetag openblock %} endblocktrans {% templatetag closeblock %}
   </h2>
-  {% templatetag openblock %} include '{{ app_name }}/{{ model_slug }}/object_table_list.html' {% templatetag closeblock %}
-  {% templatetag openblock %} include '{{ app_name }}/{{ model_slug }}/pagination.html' {% templatetag closeblock %}
+  {% templatetag openblock %} include '{{ app_name }}/object_table_list.html' {% templatetag closeblock %}
+  {% templatetag openblock %} include '{{ app_name }}/pagination.html' {% templatetag closeblock %}
 {% templatetag openblock %} endblock {% templatetag closeblock %}

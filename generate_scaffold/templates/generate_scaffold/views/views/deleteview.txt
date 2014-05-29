@@ -1,4 +1,5 @@
-class {{ class_name }}DeleteView({{ class_name }}View, DeleteView):
+class {{ class_name }}DeleteView(DeleteView):
+    model = {{ class_name }}
 
     def get_success_url(self):
         from django.core.urlresolvers import reverse

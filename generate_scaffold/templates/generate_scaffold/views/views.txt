@@ -5,29 +5,13 @@ from django.views.generic import ListView, DetailView, CreateView, \
                                  TodayArchiveView, WeekArchiveView, \
                                  YearArchiveView{% endif %}
 
+from ..models import {{ class_name }}
 
-from {{ app_name }}.models import {{ class_name }}
-
-
-class {{ class_name }}View(object):
-    model = {{ class_name }}
-
-    def get_template_names(self):
-        """Nest templates within {{ model_slug }} directory."""
-        tpl = super({{ class_name }}View, self).get_template_names()[0]
-        app = self.model._meta.app_label
-        mdl = '{{ model_slug }}'
-        self.template_name = tpl.replace(app, '{0}/{1}'.format(app, mdl))
-        return [self.template_name]
-
-
-{% if is_timestamped %}class {{ class_name }}DateView({{ class_name }}View):
+{% if is_timestamped %}class {{ class_name }}DateViewMixin(object):
     date_field = '{{ timestamp_field }}'
     month_format = '%m'
 
-
-{% endif %}class {{ class_name }}BaseListView({{ class_name }}View):
+{% endif %}class {{ class_name }}BaseListViewMixin(object):
     paginate_by = 10
-
 
 {% for view in views %}{{ view }}{% endfor %}

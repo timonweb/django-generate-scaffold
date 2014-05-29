@@ -1,4 +1,4 @@
-class {{ class_name }}UpdateView({{ class_name }}View, UpdateView):
-    pass
+class {{ class_name }}UpdateView(UpdateView):
+    model = {{ class_name }}
 
 
