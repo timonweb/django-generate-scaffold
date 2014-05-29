@@ -1,4 +1,4 @@
-# django-generate-scaffold [![build-status](https://secure.travis-ci.org/modocache/django-generate-scaffold.png)](http://travis-ci.org/#!/modocache/django-generate-scaffold) [![endorse](http://api.coderwall.com/modocache/endorsecount.png)](http://coderwall.com/modocache)
+## THIS IS A FORK DONE BY TIMONWEB. THE WORK IS IN PROGRESS. BUT I THINK IT IS USABLE ;)
 
 Generate a Django model, views, URLconf, and templates using a single command.
 
@@ -86,9 +86,3 @@ based tests every time a file is modified:
 - Propose new features or report bugs by creating an issue on Github.
 - Add new features, tests, or fix stuff and issue a pull request.
 - Create a better, more eloquent screencast with less stammering.
-
-
-## Issues
-
-If you experience any issues, please
-[create an issue on Github](https://github.com/modocache/django-generate-scaffold/issues).
