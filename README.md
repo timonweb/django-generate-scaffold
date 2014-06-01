@@ -69,30 +69,4 @@ issues when rendering templates.
 
 ## Development
 
-`django-generate-scaffold` is currently in ALPHA.
-
-### Running Tests
-
-In order to run the test suite, install your local version of `django-generate-scaffold`
-and start a Selenium server and issue the following commands:
-
-        $ cd django-generate-scaffold
-        $ python setup.py install --force
-        $ cd test_project
-        $ python test_app/tests/runtests.py
-
-Consult `.travis.yml` for the exact steps necessary to run the test
-suite.
-
-#### Autotesting via watchr
-
-By installing the gems in the Gemfile, you can automatically run all non-Selenium
-based tests every time a file is modified:
-
-        $ watchr autotest.rb
-
-### How to Contribute
-
-- Propose new features or report bugs by creating an issue on Github.
-- Add new features, tests, or fix stuff and issue a pull request.
-- Create a better, more eloquent screencast with less stammering.
+`django-generate-scaffold` is currently in DEV.
