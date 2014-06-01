@@ -16,7 +16,7 @@ available [here](http://vimeo.com/42399125).
 
 - Install `django-generate-scaffold`:
 
-        $ pip install django-generate-scaffold
+        $ pip install git+https://github.com/timonweb/django-generate-scaffold.git
 
 - Add `generate_scaffold` to your `INSTALLED_APPS`
 - Run the `generatescaffold` management command:
