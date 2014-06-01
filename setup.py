@@ -7,12 +7,12 @@ setup(
     description='Generate a Django model, views, URLconf, '
                 'and templates on the command line in seconds.',
     long_description='Please see the Github page for details: '
-                     'http://github.com/modocache/django-generate-scaffold',
+                     'https://github.com/timonweb/django-generate-scaffold',
     keywords='django generate scaffold',
     author='modocache',
-    author_email='modocache@gmail.com',
-    url='http://github.com/modocache/django-generate-scaffold',
-    install_requires=['Django>=1.3'],
+    author_email='tim@timonweb.com',
+    url='https://github.com/timonweb/django-generate-scaffold',
+    install_requires=['Django>=1.6'],
     packages=[
         'generate_scaffold',
         'generate_scaffold.generators',
