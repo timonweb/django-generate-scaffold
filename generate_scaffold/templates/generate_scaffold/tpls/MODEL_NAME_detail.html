@@ -1,6 +1,4 @@
-{% load i18n %}
-
-{% templatetag openblock %} extends '{{ app_name }}/base.html' {% templatetag closeblock %}
+{% load i18n %}{% templatetag openblock %} extends '{{ app_name }}/{{ model_slug }}_base.html' {% templatetag closeblock %}
 
 {% templatetag openblock %} load i18n {% templatetag closeblock %}
 
@@ -13,7 +11,7 @@
   {% templatetag openblock %} trans "{% blocktrans %}{{ class_name }} Detail{% endblocktrans %}" {% templatetag closeblock %}
 {% templatetag openblock %} endblock {% templatetag closeblock %}
 
-{% if is_timestamped %}
+{% if with_archives %}
 {% templatetag openblock %} block breadcrumbs {% templatetag closeblock %}
   <ul class='breadcrumb'>
     <li>

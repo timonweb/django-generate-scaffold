@@ -10,7 +10,7 @@ class UrlsGenerator(BaseGenerator):
 
     # FIXME - Accomodate for empty urls.py, without 
     #         url imports.
-    def render_urls(self, model, timestamp_fieldname=None):
+    def render_urls(self, model, timestamp_fieldname=None, with_archives=False):
         urls_module = self.get_app_module('urls')
         is_urlpatterns_available = \
             hasattr(urls_module, 'urlpatterns')
@@ -21,7 +21,7 @@ class UrlsGenerator(BaseGenerator):
         class_name = model._meta.concrete_model.__name__
         model_slug = slugify(class_name)
 
-        if self.get_timestamp_field(model, timestamp_fieldname):
+        if self.get_timestamp_field(model, timestamp_fieldname) and with_archives:
             is_timestamped = True
         else:
             is_timestamped = False
@@ -34,6 +34,7 @@ class UrlsGenerator(BaseGenerator):
                 'model_slug': model_slug,
                 'class_name': class_name,
                 'is_timestamped': is_timestamped,
+                'with_archives': with_archives,
             }
             rendered_url_patterns.append(t.render(Context(c)))
 
@@ -44,5 +45,6 @@ class UrlsGenerator(BaseGenerator):
             'model_slug': model_slug,
             'url_patterns_operator': url_patterns_operator,
             'urls': rendered_url_patterns,
+            'with_archives': with_archives,
         }
         return urls_template.render(Context(c))

@@ -1,4 +1,4 @@
-{% if is_timestamped %}    url(
+{% if with_archives %}    url(
         regex=r'^{{ model_slug }}/archive/(?P<year>\d{4})/'
                '(?P<month>\d{1,2})/'
                '(?P<day>\d{1,2})/$',

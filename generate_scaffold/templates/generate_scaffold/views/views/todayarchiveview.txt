@@ -1,4 +1,4 @@
-{% if is_timestamped %}class {{ class_name }}TodayArchiveView(
+{% if with_archives %}class {{ class_name }}TodayArchiveView(
     {{ class_name }}DateViewMixin, {{ class_name }}BaseListViewMixin, TodayArchiveView):
     model = {{ class_name }}
 

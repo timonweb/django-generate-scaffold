@@ -1,3 +1,5 @@
+
+
 from .views.{{ model_slug }}_views import *
 urlpatterns {{ url_patterns_operator }} patterns('',
 {% for url in urls %}{{ url }}{% endfor %})

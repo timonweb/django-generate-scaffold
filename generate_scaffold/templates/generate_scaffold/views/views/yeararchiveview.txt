@@ -1,4 +1,4 @@
-{% if is_timestamped %}class {{ class_name }}YearArchiveView(
+{% if with_archives %}class {{ class_name }}YearArchiveView(
     {{ class_name }}DateViewMixin, {{ class_name }}BaseListViewMixin, YearArchiveView):
     make_object_list = True
     model = {{ class_name }}

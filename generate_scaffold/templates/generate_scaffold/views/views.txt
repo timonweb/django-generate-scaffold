@@ -1,5 +1,5 @@
 from django.views.generic import ListView, DetailView, CreateView, \
-                                 DeleteView, UpdateView{% if is_timestamped %}, \
+                                 DeleteView, UpdateView{% if with_archives %}, \
                                  ArchiveIndexView, DateDetailView, \
                                  DayArchiveView, MonthArchiveView, \
                                  TodayArchiveView, WeekArchiveView, \
@@ -7,7 +7,7 @@ from django.views.generic import ListView, DetailView, CreateView, \
 
 from ..models import {{ class_name }}
 
-{% if is_timestamped %}class {{ class_name }}DateViewMixin(object):
+{% if with_archives %}class {{ class_name }}DateViewMixin(object):
     date_field = '{{ timestamp_field }}'
     month_format = '%m'
 

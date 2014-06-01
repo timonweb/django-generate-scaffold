@@ -1,4 +1,4 @@
-{% if is_timestamped %}class {{ class_name }}DateDetailView({{ class_name }}DateViewMixin, DateDetailView):
+{% if with_archives %}class {{ class_name }}DateDetailView({{ class_name }}DateViewMixin, DateDetailView):
     model = {{ class_name }}
 
 {% endif %}

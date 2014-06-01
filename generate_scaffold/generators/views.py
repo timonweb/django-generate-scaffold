@@ -8,7 +8,7 @@ from generate_scaffold.utils.directories import get_templates_in_dir
 
 class ViewsGenerator(BaseGenerator):
 
-    def render_views(self, model, timestamp_fieldname=None):
+    def render_views(self, model, timestamp_fieldname=None, with_archives=False):
         views_class_templates = \
             get_templates_in_dir('generate_scaffold', 'views', 'views')
 
@@ -17,13 +17,14 @@ class ViewsGenerator(BaseGenerator):
 
         timestamp_field = self.get_timestamp_field(
             model, timestamp_fieldname)
-        is_timestamped = True if timestamp_field else False
+        is_timestamped = True if timestamp_field and with_archives else False
 
         views_context = {
             'app_name': self.app_name,
             'model_slug': model_slug,
             'class_name': class_name,
             'is_timestamped': is_timestamped,
+            'with_archives': with_archives,
         }
         if is_timestamped:
             views_context['timestamp_field'] = timestamp_field.name

@@ -15,7 +15,7 @@ class TemplatesGenerator(BaseGenerator):
         return [f.name for f in model._meta.fields if f.name != 'id']
 
     def render_templates(
-            self, model, model_templates_dirpath, timestamp_fieldname=None):
+            self, model, model_templates_dirpath, timestamp_fieldname=None, with_archives=None):
 
         template_templates = \
             get_templates_in_dir('generate_scaffold', 'tpls')
@@ -26,7 +26,7 @@ class TemplatesGenerator(BaseGenerator):
 
         timestamp_field = self.get_timestamp_field(
             model, timestamp_fieldname)
-        is_timestamped = True if timestamp_field else False
+        is_timestamped = True if timestamp_field and with_archives else False
 
         context_keys = {
             'year': 'year.year' if DJANGO_VERSION >= (1, 5) else 'year'
@@ -49,7 +49,8 @@ class TemplatesGenerator(BaseGenerator):
                 'class_name': class_name,
                 'filename': dst_abspath,
                 'is_timestamped': is_timestamped,
-                'context_keys': context_keys
+                'context_keys': context_keys,
+                'with_archives': with_archives,
             }
             if is_timestamped:
                 c['timestamp_field'] = timestamp_field.name

@@ -1,4 +1,4 @@
-{% if is_timestamped %}class {{ class_name }}MonthArchiveView(
+{% if with_archives %}class {{ class_name }}MonthArchiveView(
     {{ class_name }}DateViewMixin, {{ class_name }}BaseListViewMixin, MonthArchiveView):
     model = {{ class_name }}
 

@@ -1,4 +1,4 @@
-{% if is_timestamped %}class {{ class_name }}WeekArchiveView(
+{% if with_archives %}class {{ class_name }}WeekArchiveView(
     {{ class_name }}DateViewMixin, {{ class_name }}BaseListViewMixin, WeekArchiveView):
     model = {{ class_name }}
 

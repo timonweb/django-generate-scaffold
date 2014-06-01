@@ -54,6 +54,12 @@ class Command(VerboseCommandMixin, BaseCommand):
             help=_('Do not automatically append created_at and updated_at '
                    'DateTimeFields to generated models.')
         ),
+        make_option('-a', '--with-archives',
+            action='store_true',
+            dest='with_archives',
+            default=False,
+            help=_('Create archive views.')
+        ),
     )
 
     def handle(self, *args, **options):
@@ -73,6 +79,7 @@ class Command(VerboseCommandMixin, BaseCommand):
         self.is_timestamped = options.get('is_timestamped', True)
         self.existing_model = options.get('existing_model', None)
         self.timestamp_fieldname = options.get('timestamp_fieldname', None)
+        self.with_archives = options.get('with_archives', False)
 
         if self.timestamp_fieldname and not self.existing_model:
             raise CommandError(smart_str(_(
@@ -217,7 +224,7 @@ class Command(VerboseCommandMixin, BaseCommand):
 
             views_generator = ViewsGenerator(app_name)
             rendered_views = views_generator.render_views(
-                generated_model, self.timestamp_fieldname)
+                generated_model, self.timestamp_fieldname, self.with_archives)
 
             with transaction.open(model_views_filepath, 'a+') as f:
                 f.write(rendered_views)
@@ -237,7 +244,7 @@ class Command(VerboseCommandMixin, BaseCommand):
 
             urls_generator = UrlsGenerator(app_name)
             rendered_urls = urls_generator.render_urls(
-                generated_model, self.timestamp_fieldname)
+                generated_model, self.timestamp_fieldname, self.with_archives)
 
             with transaction.open(app_urls_filepath, 'a+') as f:
                 f.write(rendered_urls)
@@ -259,7 +266,8 @@ class Command(VerboseCommandMixin, BaseCommand):
             rendered_templates = templates_generator.render_templates(
                 generated_model,
                 app_templates_app_dirpath,
-                self.timestamp_fieldname
+                self.timestamp_fieldname,
+                self.with_archives
             )
 
             for dst_abspath, rendered_template in rendered_templates:
