@@ -37,6 +37,15 @@ available [here](http://vimeo.com/42399125).
         $ python manage.py generatescaffold blogs --model Post
         ... Generates views, etc. for Post
 
+- If you want date-based generic view to be generated, you should add `--with-archives` or `-a` option to the command, like this:
+
+        $ python manage.py generatescaffold blogs --with-archives --model Post
+        ... Generates views (including date-based views), etc. for Post
+
+- or even better, use the short version:
+
+        $ python manage.py generatescaffold blogs -am Post
+        ... Generates views (including date-based views), etc. for Post
 
 - Note that if the model specified with the `--model` option has a `DateField` or a `DateTimeField`,
   date-based generic views will be generated based on that field. To specify a specific field to use,
