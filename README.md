@@ -8,6 +8,7 @@ Generate a Django model, views, URLconf, and templates using a single command.
 A screencast introducing `django-generate-scaffold` is
 available [here](http://vimeo.com/42399125).
 
+NOTE: This video shows how to use vanilla django-generate-scaffold. It may differ from how this fork works. I'm going to record a separate video for this fork.
 
 ## Usage
 
