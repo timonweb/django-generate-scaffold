@@ -58,7 +58,7 @@ class Command(VerboseCommandMixin, BaseCommand):
             action='store_true',
             dest='with_archives',
             default=False,
-            help=_('Create archive views.')
+            help=_('Create archive views and templates.')
         ),
     )
 

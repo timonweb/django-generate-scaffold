@@ -1,4 +1,3 @@
 class {{ class_name }}DetailView(DetailView):
     model = {{ class_name }}
 
-

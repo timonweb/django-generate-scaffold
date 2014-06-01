@@ -1,4 +1,3 @@
 class {{ class_name }}ListView({{ class_name }}BaseListViewMixin, ListView):
     model = {{ class_name }}
 
-

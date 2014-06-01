@@ -5,4 +5,3 @@ class {{ class_name }}DeleteView(DeleteView):
         from django.core.urlresolvers import reverse
         return reverse('{{ app_name }}_{{ model_slug }}_list')
 
-
