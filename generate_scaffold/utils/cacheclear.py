@@ -1,12 +1,12 @@
 import os
 import imp
 
-from django.db.models.loading import AppCache
+#from django.db.models.loading import AppCache
 from django.utils.datastructures import SortedDict
 
 
 def reload_django_appcache():
-    cache = AppCache()
+    cache = {}
 
     cache.app_store = SortedDict()
     cache.app_models = SortedDict()

@@ -16,6 +16,7 @@ from generate_scaffold.management.verbosity import VerboseCommandMixin
 from generate_scaffold.utils.cacheclear import clean_pyc_in_dir, \
                                                reload_django_appcache
 from generate_scaffold.utils.modules import import_child
+from generate_scaffold.generators.admin import AdminGenerator
 
 
 class Command(VerboseCommandMixin, BaseCommand):
@@ -248,6 +249,26 @@ class Command(VerboseCommandMixin, BaseCommand):
 
             with transaction.open(app_urls_filepath, 'a+') as f:
                 f.write(rendered_urls)
+                f.seek(0)
+                self.log(f.read())
+
+            ### Generate Admin ###
+            admin_filepath = os.path.join(app_dirpath, 'admin.py')
+            if not os.path.isfile(admin_filepath):
+                with transaction.open(admin_filepath, 'a+') as f:
+                    s = 'from django.contrib import admin\n\n'
+                    f.write(s)
+                    f.seek(0)
+                    self.log(f.read())
+            else:
+                self.msg('exists', admin_filepath)
+
+            admin_generator = AdminGenerator(app_name)
+            rendered_admin = admin_generator.render_admin(
+                generated_model)
+
+            with transaction.open(admin_filepath, 'a+') as f:
+                f.write(rendered_admin)
                 f.seek(0)
                 self.log(f.read())
 
